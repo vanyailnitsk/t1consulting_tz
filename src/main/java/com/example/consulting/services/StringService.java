@@ -1,6 +1,8 @@
 package com.example.consulting.services;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -11,7 +13,7 @@ import java.util.stream.Collectors;
 public class StringService {
     public Map<Character, Integer> calculateSymbolsFrequency(String str) {
         if (str == null || str.isEmpty()) {
-            throw new IllegalArgumentException("String should not be empty!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"String should not be empty!");
         }
         Map<Character, Integer> frequencyMap = new HashMap<>();
         for (char c : str.toCharArray()) {

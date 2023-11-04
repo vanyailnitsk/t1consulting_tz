@@ -1,6 +1,7 @@
 package com.example.consulting.services;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -33,7 +34,7 @@ public class StringServiceTest {
     void calculateSymbolsFrequencyEmptyString() {
         String test = "";
         assertThatThrownBy(() -> underTest.calculateSymbolsFrequency(test))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(ResponseStatusException.class)
                 .hasMessageContaining(
                         "String should not be empty!"
                 );
@@ -42,7 +43,7 @@ public class StringServiceTest {
     @Test
     void calculateSymbolsFrequencyNullString() {
         assertThatThrownBy(() -> underTest.calculateSymbolsFrequency(null))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(ResponseStatusException.class)
                 .hasMessageContaining(
                         "String should not be empty!"
                 );
